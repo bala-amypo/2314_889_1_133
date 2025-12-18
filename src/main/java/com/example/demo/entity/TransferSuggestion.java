@@ -29,5 +29,26 @@ public class TransferSuggestion{
     public void setPriority(String priority){
         this.priority = priority;
     }
-    public void setSuggestedAt()
+    public void setSuggestedAt(LocalDateTime suggestedAt){
+        this.suggestedAt = suggestedAt;
+    }
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public Long getId(){
+        return id;
+    }
+    public Integer getQuantity(){
+        return quantity;
+    }
+    public String getPriority(){
+        return priority;
+    }
+    public String getStatus(){
+        return status;
+    }
+    public LocalDateTime getSuggestedAt(){
+        return suggestedAt;
+    }
 }
