@@ -1,41 +1,52 @@
 package com.example.demo.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.example.demo.entity.Store;
-import java.util.*;
-import com.example.demo.service.Storeservice;
+import com.example.demo.repository.Storerepo;
+
 @Service
-public class Storeservice{
+public class StoreserviceImpl implements Storeservice {
 
     private final Storerepo rep;
 
-    public Storeservice(Storerepo rep){
+    public StoreserviceImpl(Storerepo rep) {
         this.rep = rep;
     }
-    
-    public Store savedata(Store newfile){
-        return rep.save(newfile);
-    }
+
     @Override
-    public Store getIdvalue(Long id){
-        return rep.findById(id);
+    public Store savedata(Store store) {
+        return rep.save(store);
     }
+
     @Override
-    public List<Store> getall(){
+    public Store getIdvalue(Long id) {
+        return rep.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Store> getall() {
         return rep.findAll();
     }
+
     @Override
-    public Store update(Long id,Store newfile){
+    public Store update(Long id, Store newStore) {
         Store existing = rep.findById(id).orElse(null);
 
         if (existing != null) {
-            existing.setName(newfile.getName());
-            existing.setEmail(newfile.getEmail());
+            existing.setStoreName(newStore.getStoreName());
+            existing.setAddress(newStore.getAddress());
+            existing.setRegion(newStore.getRegion());
+            existing.setActive(newStore.isActive());
             return rep.save(existing);
         }
         return null;
     }
+
     @Override
-    public void update(Long id){
-        rep.deleteById(id); 
+    public void del(Long id) {
+        rep.deleteById(id);
     }
 }

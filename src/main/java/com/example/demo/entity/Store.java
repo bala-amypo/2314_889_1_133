@@ -1,15 +1,26 @@
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
-public class Store{
+public class Store {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String storeName;
     private String address;
     private String region;
     private boolean active = true;
 
-    public Store(Long id,String storeName,String address,String region,boolean active){
+ 
+    public Store() {
+    }
+
+
+    public Store(Long id, String storeName, String address, String region, boolean active) {
         this.id = id;
         this.storeName = storeName;
         this.address = address;
@@ -17,36 +28,45 @@ public class Store{
         this.active = active;
     }
 
-    public void setstoreName(){
-        this.storeName = storeName;
-    }
-
-    public void setid(){
-        this.id = id;
-    }
-    public void setaddress(){
-        this.address = address;
-    }
-    public void setregion(){
-        this.region = region;
-    }
-    public void setactive(){
-        this.active = active;
-    }
-
-    public Long getid(Long id){
+   
+    public Long getId() {
         return id;
     }
-    public String getstoreName(String storeName){
+
+    public String getStoreName() {
         return storeName;
     }
-    public String getaddress(String address){
+
+    public String getAddress() {
         return address;
     }
-    public getregion(String region){
+
+    public String getRegion() {
         return region;
     }
-    public getactive(boolean active){
+
+    public boolean isActive() {
         return active;
+    }
+
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
