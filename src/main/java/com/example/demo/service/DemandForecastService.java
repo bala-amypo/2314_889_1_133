@@ -3,6 +3,6 @@ import java.util.List;
 import com.example.demo.entity.DemandForecastService;
 
 public interface DemandForecastService{
-    public void createForecast(DemandForecast forecast);
-    public DemandForecast getForecast(Long storeId,Long productId);
+    DemandForecast createForecast(DemandForecast forecast);
+    DemandForecast getForecast(Long storeId,Long productId);
 }
