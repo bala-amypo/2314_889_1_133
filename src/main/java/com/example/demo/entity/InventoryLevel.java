@@ -7,4 +7,23 @@ public class InventoryLevel{
     @PositiveOrZero
     private Integer quantity;
     private LocalDate lastUpdated;
+
+    public InventoryLevel(){
+
+    }
+    public InventoryLevel(Long id,Integer quantity,LocalDate lastUpdated){
+        this.id = id;
+        this.quantity = quantity;
+        this.lastUpdated = lastUpdated;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+    public void setQuantity(Integer quantity){
+        this.quantity =quantity;
+    }
+    public void setLastUpdated(LocalDate lastupdated){
+        this.lastupdated = 
+    }
 }
