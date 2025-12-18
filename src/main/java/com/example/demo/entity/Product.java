@@ -26,13 +26,13 @@ public class Product{
 
     }
 
-    public void setId(){
+    public void setId(String name){
         this.id = id;
     }
-    public void setName(){
+    public void setName(String name){
         this.name = name;
     }
-    public void setSku(St){
+    public void setSku(String sku){
         this.sku = sku
     }
     public void setCategory(String category){
@@ -40,5 +40,21 @@ public class Product{
     }
     public void setActive(boolean active){
         this.active = active;
+    }
+
+    public Long getId(){
+        return id;
+    }
+    public String getName(){
+        return name;
+    }
+    public String getSku(){
+        return sku;
+    }
+    publlic String getCategory(){
+        return category;
+    }
+    public boolean getActive(){
+        return active;
     }
 }
