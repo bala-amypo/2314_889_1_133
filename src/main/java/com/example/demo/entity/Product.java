@@ -2,8 +2,10 @@ package com.example.demo.entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-iimport jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 @Entity
+@Table(name = "Product")
 public class Product{
     @Id
     private Long id;
