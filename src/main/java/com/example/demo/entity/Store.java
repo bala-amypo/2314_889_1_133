@@ -9,7 +9,7 @@ public class Store{
     private String region;
     private boolean active = true;
 
-    public class Store(Long id,String storeName,String address,String region,boolean active){
+    public Store(Long id,String storeName,String address,String region,boolean active){
         this.id = id;
         this.storeName = storeName;
         this.address = address;
@@ -34,19 +34,19 @@ public class Store{
         this.active = active;
     }
 
-    public Long getid(){
+    public Long getid(Long id){
         return id;
     }
-    public String getstoreName(){
+    public String getstoreName(String storeName){
         return storeName;
     }
-    public String getaddress(){
+    public String getaddress(String address){
         return address;
     }
-    public getregion(){
+    public getregion(String region){
         return region;
     }
-    public getactive(){
+    public getactive(boolean active){
         return active;
     }
 }
