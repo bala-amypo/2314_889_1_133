@@ -13,4 +13,10 @@ public class StoreServiceImpl implements StoreService{
         this.storerepo = storerepo;
     }
     @Override
+    public Store createStore(Store store){
+        if(storerepo.existsByName(store.getName())){
+            throw new RuntimeException("Store name already exists");
+        }
+        return storerepo.save(store);
+    }
 }
