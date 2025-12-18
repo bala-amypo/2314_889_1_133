@@ -21,7 +21,29 @@ public class DemandForecast{
         this.confidenceScore = confidenceScore;
     }
 
-    public void setId(){
+    public void setId(Long id){
+        this.id = id;
+    }
+    public void setForecastDate(LocalDate forecastdate){
+        this.forecastDate = forecastDate;
+    }
+    public void setPredictedDemand(Integer predictedDemand){
+        this.predictedDemand = preedictedDemand;
+    }
+    public void setConfidenceScore(Double confidenceScore){
+        this.confidenceScore = confidenceScore;
+    }
 
+    public Long setId(){
+        return id;
+    }
+    public Localdate setForecastDate(){
+        return forecastDate;
+    }
+    public Integer setPredictedDemand(){
+        return preedictedDemand;
+    }
+    public Double setConfidenceScore(){
+        return confidenceScore;
     }
 }
