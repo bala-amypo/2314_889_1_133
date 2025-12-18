@@ -2,7 +2,7 @@ package com.example.demo.entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.NotBlank;
+iimport jakarta.validation.constraints.NotBlank;
 @Entity
 public class Product{
     @Id
@@ -26,7 +26,7 @@ public class Product{
 
     }
 
-    public void setId(String name){
+    public void setId(Long id){
         this.id = id;
     }
     public void setName(String name){
