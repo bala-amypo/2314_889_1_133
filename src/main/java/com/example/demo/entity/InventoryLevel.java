@@ -34,7 +34,7 @@ public class InventoryLevel{
     public Integer getQuantity(){
         return quantity;
     }
-    public LocalDate getLastupdated(){
+    public LocalDateTime getLastupdated(){
         return lastUpdated;
     }
 }

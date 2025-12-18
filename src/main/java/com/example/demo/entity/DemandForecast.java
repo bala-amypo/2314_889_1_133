@@ -33,16 +33,16 @@ public class DemandForecast{
         this.confidenceScore = confidenceScore;
     }
 
-    public Long setId(){
+    public Long getId(){
         return id;
     }
-    public Localdate setForecastDate(){
+    public LocalDate getForecastDate(){
         return forecastDate;
     }
-    public Integer setPredictedDemand(){
+    public Integer getPredictedDemand(){
         return predictedDemand;
     }
-    public Double setConfidenceScore(){
+    public Double getConfidenceScore(){
         return confidenceScore;
     }
 }
