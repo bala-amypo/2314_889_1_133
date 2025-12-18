@@ -17,5 +17,9 @@ public class DemandForecastServiceImpl implements DemandForecastService{
     }
 
     @Override
-    
+    public DemandForecast createForecast(DemandForecast forecast){
+        if(forecast.getForecastDate().isBefore(LocalDate.now())){
+            throw new RuntimeException("Forecast date must be in the future");
+        }
+    }
 }
