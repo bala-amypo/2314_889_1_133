@@ -1,16 +1,27 @@
+package com.example.demo.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+
 @Entity
 public class Store {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String storeName;
     private String address;
     private String region;
     private boolean active = true;
+
+    
+    public Store() {
+    }
+
+    
     public Store(Long id, String storeName, String address, String region, boolean active) {
         this.id = id;
         this.storeName = storeName;
@@ -19,24 +30,24 @@ public class Store {
         this.active = active;
     }
 
-   
-    public Long getId(Long id) {
+    
+    public Long getId() {
         return id;
     }
 
-    public String getStoreName(String storeName) {
+    public String getStoreName() {
         return storeName;
     }
 
-    public String getAddress(String address) {
+    public String getAddress() {
         return address;
     }
 
-    public String getRegion(String region) {
+    public String getRegion() {
         return region;
     }
 
-    public boolean getActive(boolean active) {
+    public boolean isActive() {
         return active;
     }
 

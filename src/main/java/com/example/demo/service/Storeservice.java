@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Store;
 import java.util.*;
-import com.example.demo.service.Storeservice;
 import com.example.demo.repository.Storerepo;
 @Service
 public class Storeservice{
