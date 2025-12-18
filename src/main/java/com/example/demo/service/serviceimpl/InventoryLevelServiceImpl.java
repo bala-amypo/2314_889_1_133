@@ -15,5 +15,11 @@ public class InventoryLevelServiceImpl implements InventoryLevelService{
     }
 
     @Override
-    public Inventory
+    public InventoryLevel updateInventory(Long storeId,Long productId,Integer quantity){
+        if(quantity < 0){
+            throw new RuntimeException("Quantity must be >=0");
+        }
+
+        Inventory
+    }
 }
