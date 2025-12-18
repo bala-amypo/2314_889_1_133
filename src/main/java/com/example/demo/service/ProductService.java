@@ -3,7 +3,7 @@ import java.util.List;
 import com.example.demo.entity.Product;
 
 public interface Product{
-    public void createProduct(Product product);
-    public Product getProductById(Long id);
-    public List<Product> getAllProducts();
+     Product createProduct(Product product);
+     Product getProductById(Long id);
+     List<Product> getAllProducts();
 }
