@@ -17,7 +17,28 @@ public class Product{
     public Product(){
 
     }
-    public Product(){
-        
+    public Product(Long id,String sku,String name,String category,boolean active){
+        this.id = id;
+        this.sku = sku;
+        this.name = name;
+        this.category = category;
+        this.active = active;
+
+    }
+
+    public void setId(){
+        this.id = id;
+    }
+    public void setName(){
+        this.name = name;
+    }
+    public void setSku(St){
+        this.sku = sku
+    }
+    public void setCategory(String category){
+        this.category = category;
+    }
+    public void setActive(boolean active){
+        this.active = active;
     }
 }
