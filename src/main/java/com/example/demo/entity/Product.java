@@ -33,7 +33,7 @@ public class Product{
         this.name = name;
     }
     public void setSku(String sku){
-        this.sku = sku
+        this.sku = sku;
     }
     public void setCategory(String category){
         this.category = category;
@@ -51,7 +51,7 @@ public class Product{
     public String getSku(){
         return sku;
     }
-    publlic String getCategory(){
+    public String getCategory(){
         return category;
     }
     public boolean getActive(){
