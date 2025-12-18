@@ -12,6 +12,10 @@ public class InventoryBalanceServiceImpl
 implements InventoryBalancerService{
     private final InventoryLevelRRepoitory inventoryRepository;
     public InventoryBalancerServiceImpl(InventoryLevelRepository inventoryRepository){
-        this.inventoryRepository
+        this.inventoryRepository==inventoryRepository;
+    }
+    @Override
+    public List<String>generateSuggestions(Long productId){
+        List<InventoryLevel>inventories=inventroyRepostiroy.
     }
 }
