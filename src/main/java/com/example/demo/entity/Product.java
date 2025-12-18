@@ -7,7 +7,7 @@ import jakarta.persistence.NotBlank;
 public class Product{
     @Id
     private Long id;
-    @Column(name=unique)
+    @Column(unique=true)
     @NotBlank
     private String sku;
     private String name;
