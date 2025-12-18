@@ -17,6 +17,18 @@ public class User{
     public User(Long id,String email,String password,String role){
         this.id = id;
         this.email= email;
-        this.passw
+        this.password = password;
+        this.role = role;
     }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    public void setPassword(String password){
+        this.password = password;
+    }
+    public void 
 }
