@@ -29,7 +29,12 @@ public class DemandForecastServiceImpl implements DemandForecastService{
 
         boolean flag = true;
 
-        if(demandrepo.findByStore)
+        if(demandrepo.findByStoreIdAndProductId(storeId,productId)){
+            flag = false;
+        }
+        if(flag){
+            throw new RuntimeException("No forecast found");
+        }
         return demandrepo.findByStoreIdAndProductId(storeId,productId);
     }
 }
