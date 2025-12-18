@@ -17,7 +17,36 @@ public class Store{
         this.active = active;
     }
 
-    public Long setName(){
-        this.store
+    public void setstoreName(){
+        this.storeName = storeName;
+    }
+
+    public void setid(){
+        this.id = id;
+    }
+    public void setaddress(){
+        this.address = address;
+    }
+    public void setregion(){
+        this.region = region;
+    }
+    public void setactive(){
+        this.active = active;
+    }
+
+    public Long getid(){
+        return id;
+    }
+    public String getstoreName(){
+        return storeName;
+    }
+    public String getaddress(){
+        return address;
+    }
+    public getregion(){
+        return region;
+    }
+    public getactive(){
+        return active;
     }
 }
