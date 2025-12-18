@@ -19,4 +19,8 @@ public class StoreServiceImpl implements StoreService{
         }
         return storerepo.save(store);
     }
+    @Override
+    public Store getStoreById(Long id){
+        return storerepo.findById(id).orElseThrow(()->new RuntimeException("Not Found"))
+    }
 }
