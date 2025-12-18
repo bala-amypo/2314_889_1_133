@@ -20,20 +20,20 @@ public class Storecontroller{
         return src.savedata(st);
     }
     @GetMapping("/getting")
-    public List<Store> getData(){
-        return src.retdata();
+    public List<Store> alldata(){
+        return src.getall();
     }
     @GetMapping("/getid/{id}")
-    public Store sepData(@PathVariable Long id){
-        return src.indData(id);
+    public Store indid(@PathVariable Long id){
+        return src.getIdvalue(id);
 
     }
     @PutMapping("/update/{id}")
-    public Store updateData(@PathVariable int id,@RequestBody Store st){
-        return src.updat(id,st);
+    public Store updatedata(@PathVariable int id,@RequestBody Store st){
+        return src.update(id,st);
     }
     @DeleteMapping("/delete/{id}")
-    public void del(@PathVariable Long id){
-         src.delete(id);
+    public void deletedata(@PathVariable Long id){
+         src.del(id);
     }
 }

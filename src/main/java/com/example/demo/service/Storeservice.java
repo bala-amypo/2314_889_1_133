@@ -1,4 +1,4 @@
-package com.example.demo.newservice.newserviceimpl;
+package com.example.demo.service;
 
 import com.example.demo.entity.Store;
 import java.util.*;
@@ -35,7 +35,7 @@ public class Storeservice{
         return null;
     }
     @Override
-    public void del(Long id){
+    public void update(Long id){
         rep.deleteById(id); 
     }
 }
