@@ -1,5 +1,5 @@
-package com.example.demo.service.impl;
-import com.example.demo.entity.InventoryLevel;
+package com.example.demo.service.serviceimpl;
+import com.example.demo.entity.Transfer;
 import com.example.demo.repository.InventoryLevelRepository;
 import com.example.demo.service.InventoryBalancerService;
 import org.springframework.stereotype,Service;
