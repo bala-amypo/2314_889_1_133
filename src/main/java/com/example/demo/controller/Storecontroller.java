@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Store;
 import com.example.demo.service.Storeservice;
-
+@CrossOrigin(origins = "*")
 @RestController
 public class Storecontroller {
 
