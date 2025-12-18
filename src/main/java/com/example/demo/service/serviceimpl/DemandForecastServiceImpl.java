@@ -9,4 +9,13 @@ import java.time.LocalDate;
 
 @Service
 
-public class DemandForecastServiceImpl implements
+public class DemandForecastServiceImpl implements DemandForecastService{
+    private final DemandForecastRepository demandrepo;
+
+    public DemandForecastServiceImpl(DemandForecastRepository demandrepo){
+        this.demandrepo = demandrepo;
+    }
+
+    @Override
+    
+}
