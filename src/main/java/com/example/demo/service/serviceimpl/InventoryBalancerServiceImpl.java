@@ -11,5 +11,7 @@ import java.util.List;
 public class InventoryBalanceServiceImpl
 implements InventoryBalancerService{
     private final InventoryLevelRRepoitory inventoryRepository;
-    public InventoryBalancerServiceImpl(InventoryLevelRepository invntory)
+    public InventoryBalancerServiceImpl(InventoryLevelRepository inventoryRepository){
+        this.inventoryRepository
+    }
 }
