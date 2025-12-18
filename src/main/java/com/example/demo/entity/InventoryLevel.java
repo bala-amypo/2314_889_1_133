@@ -2,6 +2,9 @@ package com.example.demo.entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+
+@Entity
 public class InventoryLevel{
     @Id
     private Long id;

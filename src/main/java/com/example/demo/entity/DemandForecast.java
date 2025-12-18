@@ -2,6 +2,9 @@ package com.example.demo.entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import java.time.LocalDate;
+import jakarta.persistence.Entity;
+
+@Entity
 public class DemandForecast{
     @Id
     private Long id;

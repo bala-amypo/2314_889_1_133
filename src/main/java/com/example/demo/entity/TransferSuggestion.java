@@ -1,6 +1,10 @@
 package com.example.demo.entity;
 import java.time.LocalDateTime;
-import  jakarta.persistence.Id;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+
+
+@Entity
 public class TransferSuggestion{
     @Id
     private Long id;
