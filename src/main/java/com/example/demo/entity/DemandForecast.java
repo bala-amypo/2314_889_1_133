@@ -2,7 +2,6 @@ package com.example.demo.entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 
-
 public class DemandForecast{
     @Id
     private Long id;
@@ -28,7 +27,7 @@ public class DemandForecast{
         this.forecastDate = forecastDate;
     }
     public void setPredictedDemand(Integer predictedDemand){
-        this.predictedDemand = preedictedDemand;
+        this.predictedDemand = predictedDemand;
     }
     public void setConfidenceScore(Double confidenceScore){
         this.confidenceScore = confidenceScore;
@@ -41,7 +40,7 @@ public class DemandForecast{
         return forecastDate;
     }
     public Integer setPredictedDemand(){
-        return preedictedDemand;
+        return predictedDemand;
     }
     public Double setConfidenceScore(){
         return confidenceScore;
