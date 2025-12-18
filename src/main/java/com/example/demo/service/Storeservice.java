@@ -1,43 +1,47 @@
 package com.example.demo.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.example.demo.entity.Store;
-import java.util.*;
 import com.example.demo.repository.Storerepo;
+
 @Service
-public class Storeservice{
+public class Storeservice {
 
     private final Storerepo rep;
 
-    public Storeservice(Storerepo rep){
+    public Storeservice(Storerepo rep) {
         this.rep = rep;
     }
-    
-    public Store savedata(Store newfile){
-        return rep.save(newfile);
+
+    public Store savedata(Store store) {
+        return rep.save(store);
     }
-    
-    public Store getIdvalue(Long id){
-        return rep.findById(id);
+
+    public Store getIdvalue(Long id) {
+        return rep.findById(id).orElse(null);
     }
-    
-    public List<Store> getall(){
+
+    public List<Store> getall() {
         return rep.findAll();
     }
-    
-    public Store update(Long id,Store newfile){
+
+    public Store update(Long id, Store newStore) {
         Store existing = rep.findById(id).orElse(null);
 
         if (existing != null) {
-            existing.setName(newfile.getName());
-            existing.setAddress(newfile.getAddress());
-            existing.setRegion(newfile.getRegion());
-            existing.setActive(newfile.getActive());
+            existing.setStoreName(newStore.getStoreName());
+            existing.setAddress(newStore.getAddress());
+            existing.setRegion(newStore.getRegion());
+            existing.setActive(newStore.isActive());
             return rep.save(existing);
         }
         return null;
     }
-    @Override
-    public void del(Long id){
-        rep.deleteById(id); 
+
+    public void del(Long id) {
+        rep.deleteById(id);
     }
 }
