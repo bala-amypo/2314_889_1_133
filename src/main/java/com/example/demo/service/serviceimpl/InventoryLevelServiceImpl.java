@@ -20,6 +20,11 @@ public class InventoryLevelServiceImpl implements InventoryLevelService{
             throw new RuntimeException("Quantity must be >=0");
         }
 
-        Inventory
+        InventoryLevel invention = inventoryrepo.findByStoreIdAndProductId(storeId,productId);
+        invention.setQuantity(quantity);
+        return inventoryrepo.save(invention);
     }
+
+    @Override
+    public InventoryLevel getInventory(Long storeId)
 }
