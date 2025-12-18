@@ -4,6 +4,6 @@ import com.example.demo.entity.InventoryLevelService;
 
 public interface InventoryLevelService{
     public void updateInventory(Long storeId,Long productId,Integer quantity);
-    public Product getProductById(Long id);
-    public List<Product> getAllProducts();
+    public InventoryLevel getInventory(Long storeId,Long productId);
+    public InventoryLevel getInventoryByStore(Long storeId);
 }
