@@ -11,12 +11,12 @@ import java.util.List;
 public class InventoryBalanceServiceImpl
 implements InventoryBalancerService{
     private final TransferSuggestionRepository inventoryRepository;
-    public InventoryBalancerServiceImpl(InventoryLevelRepository inventoryRepository){
+    public InventoryBalancerServiceImpl(TransferSuggestionRepository inventoryRepository){
         this.inventoryRepository==inventoryRepository;
     }
     @Override
     public List<String>generateSuggestions(Long productId){
-        List<InventoryLevel>inventories=inventroyRepostiroy.findByProductId(productIs);
+        List<TransferSuggestion>inventories=inventroyRepostiroy.findByProductId(productIs);
         List<String> suggestions=new ArrayList<>();
         for(InventoryLevel inv : inventories){
             if(int.getQuantity()<10){
