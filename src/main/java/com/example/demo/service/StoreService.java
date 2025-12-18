@@ -3,7 +3,7 @@ import java.util.List;
 import com.example.demo.entity.Store;
 
 public interface Store{
-    Store createStore(Store store);
-    Store getStoreById(Long id);
-    List<Store> getAllStores();
+    public void createStore(Store store);
+    public Store getStoreById(Long id);
+    public List<Store> getAllStores();
 }
