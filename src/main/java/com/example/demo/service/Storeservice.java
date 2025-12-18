@@ -30,7 +30,9 @@ public class Storeservice{
 
         if (existing != null) {
             existing.setName(newfile.getName());
-            existing.setEmail(newfile.getEmail());
+            existing.setAddress(newfile.getAddress());
+            existing.setRegion(newfile.getRegion());
+            existing.setActive(newfile.getActive());
             return rep.save(existing);
         }
         return null;
