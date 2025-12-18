@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
+import java.time.LocalDate;
 public class InventoryLevel{
     @Id
     private Long id;
@@ -23,7 +24,17 @@ public class InventoryLevel{
     public void setQuantity(Integer quantity){
         this.quantity =quantity;
     }
-    public void setLastUpdated(LocalDate lastupdated){
-        this.lastupdated = 
+    public void setLastupdated(LocalDate lastUpdated){
+        this.lastUpdated = lastUpdated;
+    }
+
+    public Long getId(Long id){
+         return id;
+    }
+    public Integer getQuantity(Integer quantity){
+        return quantity;
+    }
+    public LocalDate getLastupdated(LocalDate lastUpdated){
+        return lastUpdated;
     }
 }
