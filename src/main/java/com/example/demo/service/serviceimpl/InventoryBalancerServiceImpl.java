@@ -1,7 +1,7 @@
 package com.example.demo.service.serviceimpl;
-import com.example.demo.entity.Transfer;
-import com.example.demo.repository.InventoryLevelRepository;
-import com.example.demo.service.InventoryBalancerService;
+import com.example.demo.entity.TransferSuggestion;
+import com.example.demo.repository.TransferSuggestionRepository;
+import com.example.demo.service.InvenotyBalancerService;
 import org.springframework.stereotype,Service;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class InventoryBalanceServiceImpl
 implements InventoryBalancerService{
-    private final InventoryLevelRRepoitory inventoryRepository;
+    private final TransferSuggestionRepository inventoryRepository;
     public InventoryBalancerServiceImpl(InventoryLevelRepository inventoryRepository){
         this.inventoryRepository==inventoryRepository;
     }
