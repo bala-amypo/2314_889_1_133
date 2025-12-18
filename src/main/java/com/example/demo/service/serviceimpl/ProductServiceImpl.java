@@ -10,5 +10,14 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService{
     private final ProductRepository productrepo;
 
-    public ProductServiceImpl()
+    public ProductServiceImpl(ProductRepository productrepo){
+        this.productrepo = productrepo;
+    }
+
+    @Override
+    public Product createProduct(Product product){
+        if(productrepo.exitsBySku(product.getSku())){
+            throw new RuntimeException("SKU ")
+        }
+    }
 }
