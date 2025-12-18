@@ -7,4 +7,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class Inventory
+public class InventoryLevelServiceImpl implements InventoryLevelService{
+    private final InventoryLevelRepository inventoryrepo;
+
+    public InventoryLevelServiceImpl(InventoryLevelRepository inventoryrepo){
+        this.inventoryrepo = inventoryrepo;
+    }
+
+    @Override
+    public Inventory
+}
