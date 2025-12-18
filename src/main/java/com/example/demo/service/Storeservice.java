@@ -1,6 +1,41 @@
-package com.example.demo.service;
-import java.util.*;
+package com.example.demo.newservice.newserviceimpl;
 
+import com.example.demo.entity.Store;
+import java.util.*;
+import com.example.demo.service.Storeservice;
+@Service
 public class Storeservice{
+
+    private final Storerepo rep;
+
+    public Storeservice(Storerepo rep){
+        this.rep = rep;
+    }
     
+    public Store savedata(Store newfile){
+        return rep.save(newfile);
+    }
+    @Override
+    public Store getIdvalue(Long id){
+        return rep.findById(id);
+    }
+    @Override
+    public List<Store> getall(){
+        return rep.findAll();
+    }
+    @Override
+    public Store update(Long id,Store newfile){
+        Store existing = rep.findById(id).orElse(null);
+
+        if (existing != null) {
+            existing.setName(newfile.getName());
+            existing.setEmail(newfile.getEmail());
+            return rep.save(existing);
+        }
+        return null;
+    }
+    @Override
+    public void del(Long id){
+        rep.deleteById(id); 
+    }
 }
