@@ -21,5 +21,11 @@ public class DemandForecastServiceImpl implements DemandForecastService{
         if(forecast.getForecastDate().isBefore(LocalDate.now())){
             throw new RuntimeException("Forecast date must be in the future");
         }
+        return demandrepo.save(forecast);
+    }
+
+    @Override
+    public DemandForecast getForecast(Long storeId,Long productId){
+        return demandrepo.findByStoreIdAndProductId(storeId,productId);
     }
 }
