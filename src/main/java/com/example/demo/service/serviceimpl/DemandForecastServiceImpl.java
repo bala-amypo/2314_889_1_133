@@ -26,6 +26,10 @@ public class DemandForecastServiceImpl implements DemandForecastService{
 
     @Override
     public DemandForecast getForecast(Long storeId,Long productId){
+
+        boolean flag = true;
+
+        if(demandrepo.findByStore)
         return demandrepo.findByStoreIdAndProductId(storeId,productId);
     }
 }
