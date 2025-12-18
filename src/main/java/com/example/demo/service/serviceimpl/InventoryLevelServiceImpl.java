@@ -26,5 +26,7 @@ public class InventoryLevelServiceImpl implements InventoryLevelService{
     }
 
     @Override
-    public InventoryLevel getInventory(Long storeId)
+    public InventoryLevel getInventory(Long storeId,Long productId){
+        return inventoryrepo.findByStoreAndProductId(storeId,productId);
+    }
 }
