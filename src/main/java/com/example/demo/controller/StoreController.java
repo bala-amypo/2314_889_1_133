@@ -17,16 +17,16 @@ import java.util.*;
 
 public class StoreController{
     @Autowired
-    StudentService src;
+    StoreService src;
     @PostMapping("/POST")
-    public Studententity postData(@RequestBody Studententity st){
+    public Studententity postData(@RequestBody Store st){
         return src.savedata(st);
     }
-    @GetMapping("/GET")
+    @GetMapping
     public List<Studententity> getData(){
         return src.retdata();
     }
-    @GetMapping("/GET/{id}")
+    @GetMapping("/{id}")
     public Studententity sepData(@PathVariable int id){
         return src.indData(id);
 
