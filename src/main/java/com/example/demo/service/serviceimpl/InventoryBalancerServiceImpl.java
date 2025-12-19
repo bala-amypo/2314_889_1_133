@@ -17,7 +17,7 @@ implements InventoryBalancerService{
     @Override
     public List<String>generateSuggestions(Long productId){
         List<TransferSuggestion>inventories=inventroyRepostiroy.findByProductId(productIs);
-        List<String> suggestions=new ArrayList<>();
+        List<TransferSuggestion> suggestions=new ArrayList<>();
         for(InventoryLevel inv : inventories){
             if(int.getQuantity()<10){
                 suggestions.add("Low stock at Store ID:"+inv.getStore().getId());
