@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Store;
-import com.example.demo.service.StoreService;
+import com.example.demo.entity.Studententity;
+import com.example.demo.service.Studentservice;
 import java.util.*;
 @RestController
 @RequestMapping("/api/stores")
