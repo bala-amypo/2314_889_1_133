@@ -1,32 +1,32 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.InventoryLevel;
 import com.example.demo.service.InventoryLevelService;
-import java.util.*;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/api/inventory")
+public class InventoryLevelController {
 
-public class InventoryLevelController{
-    @Autowired
-    ProductService src;
-    @PostMapping
-    public Product Createproduct(@RequestBody Product st){
-        return src.createProduct(st);
-    }
-    @GetMapping
-    public List<Product> Listproducts(){
-        return src.getAllProducts();
-    }
-    @GetMapping("/{id}")
-    public Product Getproduct(@PathVariable Long id){
-        return src.getProductById(id);
+    private final InventoryService inventoryService;
 
+    public InventoryLevelController(InventoryService inventoryService) {
+        this.inventoryService = inventoryService;
+    }
+
+    // PUT /api/inventory/update?storeId=&productId=&quantity=
+    @PutMapping("/update")
+    public Inventory updateInventory(
+            @RequestParam Long storeId,
+            @RequestParam Long productId,
+            @RequestParam int quantity) {
+
+        return inventoryService.updateInventory(storeId, productId, quantity);
+    }
+
+    // GET /api/inventory/store/{storeId}
+    @GetMapping("/store/{storeId}")
+    public Inventory getInventoryByStore(@PathVariable Long storeId) {
+        return inventoryService.getInventoryByStore(storeId);
     }
 }
