@@ -8,25 +8,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/inventory")
 public class InventoryLevelController {
 
-    private final InventoryService inventoryService;
+    private final InventoryLevelService inventoryService;
 
-    public InventoryLevelController(InventoryService inventoryService) {
+    public InventoryLevelController(InventoryLevelService inventoryService) {
         this.inventoryService = inventoryService;
     }
-
-    // PUT /api/inventory/update?storeId=&productId=&quantity=
     @PutMapping("/update")
-    public Inventory updateInventory(
+    public Inventory UpdateInventory(
             @RequestParam Long storeId,
             @RequestParam Long productId,
             @RequestParam int quantity) {
 
         return inventoryService.updateInventory(storeId, productId, quantity);
     }
-
-    // GET /api/inventory/store/{storeId}
     @GetMapping("/store/{storeId}")
-    public Inventory getInventoryByStore(@PathVariable Long storeId) {
+    public Inventory Getinventoryfortore(@PathVariable Long storeId) {
         return inventoryService.getInventoryByStore(storeId);
     }
 }
