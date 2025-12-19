@@ -18,15 +18,15 @@ import java.util.*;
 public class StoreController{
     @Autowired
     StudentService src;
-    @PostMapping("/post")
+    @PostMapping("/POST")
     public Studententity postData(@RequestBody Studententity st){
         return src.savedata(st);
     }
-    @GetMapping("/getting")
+    @GetMapping("/GET")
     public List<Studententity> getData(){
         return src.retdata();
     }
-    @GetMapping("/getid/{id}")
+    @GetMapping("/GET/{id}")
     public Studententity sepData(@PathVariable int id){
         return src.indData(id);
 
