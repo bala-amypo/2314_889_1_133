@@ -18,15 +18,15 @@ public class StoreController{
     @Autowired
     StoreService src;
     @PostMapping("/POST")
-    public Studententity postData(@RequestBody Store st){
+    public Store postData(@RequestBody Store st){
         return src.createStore(st);
     }
     @GetMapping
-    public List<Studententity> getData(){
+    public List<Store> getData(){
         return src.getAllStores();
     }
     @GetMapping("/{id}")
-    public Studententity sepData(@PathVariable int id){
+    public Store sepData(@PathVariable int id){
         return src.getStoreById(id);
 
     }

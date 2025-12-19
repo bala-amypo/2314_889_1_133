@@ -19,16 +19,18 @@ public class ProductController{
     ProductService src;
     @PostMapping
     public Product Createproduct(@RequestBody Product st){
-        return src.createStore(st);
+        return src.createProduct(st);
     }
     @GetMapping
     public List<Product> Listproducts(){
         return src.getAllStores();
     }
     @GetMapping("/{id}")
-    public Product Getproduct(@PathVariable int id){
-        return src.getStoreById(id);
+    public Product Getproduct(@PathVariable Long id){
+        return src.getProductById(id);
 
     }
-     
+     Product createProduct(Product product);
+     Product getProductById(Long id);
+     List<Product> getAllProducts();
 }
