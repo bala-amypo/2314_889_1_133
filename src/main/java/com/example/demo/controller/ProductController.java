@@ -8,25 +8,25 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Studententity;
-import com.example.demo.service.Studentservice;
+import com.example.demo.entity.Product;
+import com.example.demo.service.ProductService;
 import java.util.*;
 @RestController
-@RequestMapping("/api/stores")
+@RequestMapping("/api/products")
 
-public class StoreController{
+public class ProductController{
     @Autowired
-    StoreService src;
-    @PostMapping("/POST")
-    public Studententity postData(@RequestBody Store st){
+    ProductService src;
+    @PostMapping
+    public Product Createproduct(@RequestBody Product st){
         return src.createStore(st);
     }
     @GetMapping
-    public List<Studententity> getData(){
+    public List<Product> Listproducts(){
         return src.getAllStores();
     }
     @GetMapping("/{id}")
-    public Studententity sepData(@PathVariable int id){
+    public Product Getproduct(@PathVariable int id){
         return src.getStoreById(id);
 
     }
