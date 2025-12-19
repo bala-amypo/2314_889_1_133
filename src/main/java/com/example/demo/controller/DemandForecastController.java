@@ -1,28 +1,24 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Forecast;
-import com.example.demo.service.ForecastService;
+import com.example.demo.entity.DemandForecast;
+import com.example.demo.service.DemandForecastService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/forecasts")
 public class DemandForecastController {
 
-    private final ForecastService forecastService;
+    private final DemandForecastService forecastService;
 
-    public DemandForecastController(ForecastService forecastService) {
+    public DemandForecastController(DemandForecastService forecastService) {
         this.forecastService = forecastService;
     }
-
-    // POST /api/forecasts
     @PostMapping
-    public Forecast createForecast(@RequestBody Forecast forecast) {
+    public DemandForecast Createforecast(@RequestBody Forecast forecast) {
         return forecastService.createForecast(forecast);
     }
-
-    // GET /api/forecasts/store/{storeId}/product/{productId}
     @GetMapping("/store/{storeId}/product/{productId}")
-    public Forecast getForecast(
+    public DemandForecast Getspecificforecast(
             @PathVariable Long storeId,
             @PathVariable Long productId) {
 
