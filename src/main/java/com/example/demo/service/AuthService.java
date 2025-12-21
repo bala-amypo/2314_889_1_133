@@ -4,7 +4,7 @@ import com.example.demo.entity.UserAccount;
 
 import java.util.List;
 
-public interface UserAccountService {
+public interface AuthService{
 
     UserAccount register(UserAccount user);
 

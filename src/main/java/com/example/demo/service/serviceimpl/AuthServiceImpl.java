@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserAccountServiceImpl implements UserAccountService {
+public class AuthServiceImple implements UserAccountService {
 
     private final UserAccountRepository userRepo;
     private final PasswordEncoder passwordEncoder;
