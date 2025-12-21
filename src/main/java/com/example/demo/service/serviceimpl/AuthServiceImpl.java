@@ -22,7 +22,7 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException("Email is already in use.");
         }
 
-        // In a real application, password should be hashed
+        // In production, hash passwords with BCryptPasswordEncoder
         return userRepository.save(user);
     }
 
