@@ -1,50 +1,38 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.UserAccount;
-import com.example.demo.exception.BadRequestException;
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserAccountRepository;
 import com.example.demo.service.AuthService;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-public class AuthServiceImpl implements UserAccountService {
+public class AuthServiceImpl implements AuthService {
 
-    private final UserAccountRepository userRepo;
-
-    public AuthServiceImpl(UserAccountRepository userRepo) {
-        this.userRepo = userRepo;
-    }
+    @Autowired
+    private UserAccountRepository userRepository;
 
     @Override
     public UserAccount register(UserAccount user) {
-
-        if (userRepo.findByEmail(user.getEmail()).isPresent()) {
-            throw new BadRequestException("Email already exists");
+        // Check if email already exists
+        Optional<UserAccount> existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser.isPresent()) {
+            throw new RuntimeException("Email is already in use.");
         }
-        return userRepo.save(user);
+
+        // In a real application, password should be hashed
+        return userRepository.save(user);
     }
 
     @Override
     public UserAccount login(String email, String password) {
-
-        UserAccount user = userRepo.findByEmail(email)
-                .orElseThrow(() -> new BadRequestException("Invalid credentials"));
-
-        return user;
-    }
-
-    @Override
-    public UserAccount getUserById(Long id) {
-        return userRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-    }
-
-    @Override
-    public List<UserAccount> getAllUsers() {
-        return userRepo.findAll();
+        Optional<UserAccount> user = userRepository.findByEmail(email);
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            return user.get();
+        } else {
+            throw new RuntimeException("Invalid email or password");
+        }
     }
 }
