@@ -31,7 +31,7 @@ public class InventoryLevel {
         lastUpdated = LocalDateTime.now();
     }
 
-    // --------- Getters ---------
+ 
 
     public Long getId() {
         return id;
@@ -53,8 +53,7 @@ public class InventoryLevel {
         return lastUpdated;
     }
 
-    // --------- Setters ---------
-
+  
     public void setId(Long id) {
         this.id = id;
     }

@@ -24,7 +24,7 @@ public class Product {
     @Column(nullable = false)
     private Boolean active = true;
 
-    // --------- Getters ---------
+   
 
     public Long getId() {
         return id;
@@ -46,7 +46,7 @@ public class Product {
         return active;
     }
 
-    // --------- Setters ---------
+  
 
     public void setId(Long id) {
         this.id = id;
