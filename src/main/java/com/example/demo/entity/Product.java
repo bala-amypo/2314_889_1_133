@@ -1,5 +1,5 @@
 package com.example.demo.entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,8 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 public class Product{
     @Id
     private Long id;
-    @Column(unique=true)
-    @NotBlank
+    @Column(nullable = false, unique = true)
     private String sku;
     private String name;
     private String category;

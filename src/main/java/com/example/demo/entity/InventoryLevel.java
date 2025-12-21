@@ -1,43 +1,71 @@
 package com.example.demo.entity;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.*;
+
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
 
 @Entity
-public class InventoryLevel{
+@Table(name = "inventory_levels")
+public class InventoryLevel {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @PositiveOrZero
+
+    @ManyToOne
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
+    @Column(nullable = false)
     private Integer quantity;
+
     private LocalDateTime lastUpdated;
 
-    public InventoryLevel(){
-
+    @PrePersist
+    @PreUpdate
+    protected void updateTimestamp() {
+        this.lastUpdated = LocalDateTime.now();
     }
-    public InventoryLevel(Long id,Integer quantity,LocalDateTime lastUpdated){
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
-        this.quantity = quantity;
-        this.lastUpdated = lastUpdated;
     }
 
-    public void setId(Long id){
-        this.id = id;
-    }
-    public void setQuantity(Integer quantity){
-        this.quantity =quantity;
-    }
-    public void setLastupdated(LocalDateTime lastUpdated){
-        this.lastUpdated = lastUpdated;
+    public Store getStore() {
+        return store;
     }
 
-    public Long getId(){
-         return id;
+    public void setStore(Store store) {
+        this.store = store;
     }
-    public Integer getQuantity(){
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Integer getQuantity() {
         return quantity;
     }
-    public LocalDateTime getLastupdated(){
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public LocalDateTime getLastUpdated() {
         return lastUpdated;
+    }
+
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 }
