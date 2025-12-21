@@ -1,18 +1,18 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.UserAccount;
-import com.example.demo.service.UserAccountService;
+import com.example.demo.service.AuthService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
-public class UserAccountController {
+public class AuthController {
 
-    private final UserAccountService userService;
+    private final AuthService userService;
 
-    public UserAccountController(UserAccountService userService) {
+    public AuthController(AuthService userService) {
         this.userService = userService;
     }
 
