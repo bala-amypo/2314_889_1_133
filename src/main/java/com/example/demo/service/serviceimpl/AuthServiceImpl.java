@@ -16,13 +16,10 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserAccount register(UserAccount user) {
-        // Check if email already exists
         Optional<UserAccount> existingUser = userRepository.findByEmail(user.getEmail());
         if (existingUser.isPresent()) {
             throw new RuntimeException("Email is already in use.");
         }
-
-        // In production, hash passwords with BCryptPasswordEncoder
         return userRepository.save(user);
     }
 
