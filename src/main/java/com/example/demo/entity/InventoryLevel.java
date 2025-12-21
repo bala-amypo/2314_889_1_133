@@ -19,13 +19,11 @@ public class InventoryLevel {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @Column(nullable = false)
+    @PositiveOrZero
     private Integer quantity;
 
     private LocalDateTime lastUpdated;
 
-    @PrePersist
-    @PreUpdate
     protected void updateTimestamp() {
         this.lastUpdated = LocalDateTime.now();
     }
