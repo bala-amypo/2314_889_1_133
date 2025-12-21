@@ -38,7 +38,7 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
                 inventoryLevelRepository.findByProduct_Id(productId);
 
         if (inventories.isEmpty()) {
-            throw new BadRequestException("No inventory found");
+            throw new BadRequestException("No inventory found for this product");
         }
 
         Product product = inventories.get(0).getProduct();
@@ -58,7 +58,7 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
                             LocalDate.now());
 
             if (forecasts.isEmpty()) {
-                throw new BadRequestException("No forecast found");
+                continue; // Skip stores with no forecast
             }
 
             int predictedDemand =
@@ -82,15 +82,12 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
                 if (deficit > 0) {
 
                     TransferSuggestion suggestion = new TransferSuggestion();
-                    private Store sourceStore;
-                    private Store targetStore;
-private Product product;
-private int quantity;
-private String priority;
-private String status;
-
-// Add getters and setters for all fields
-;
+                    suggestion.setSourceStore(sourceInv.getStore());
+                    suggestion.setTargetStore(targetInv.getStore());
+                    suggestion.setProduct(product);
+                    suggestion.setQuantity(Math.min(surplus, deficit));
+                    suggestion.setPriority("HIGH"); // Example: set default priority
+                    suggestion.setStatus("PENDING"); // Example: set default status
 
                     suggestions.add(
                             transferSuggestionRepository.save(suggestion)
