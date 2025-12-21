@@ -1,10 +1,15 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.TransferSuggestion;
 import java.util.List;
+import com.example.demo.entity.InventoryLevel;
 
-public interface InventoryBalancerService {
-    List<TransferSuggestion> generateSuggestions(Long productId);
-    List<TransferSuggestion> getSuggestionsForStore(Long storeId);
-    TransferSuggestion getSuggestionById(Long id);
+public interface InventoryLevelService {
+
+    InventoryLevel createOrUpdateInventory(InventoryLevel inventory);
+
+    List<InventoryLevel> getInventoryForStore(Long storeId);
+
+    List<InventoryLevel> getInventoryForProduct(Long productId);
+
+    InventoryLevel getInventory(Long storeId, Long productId);
 }
