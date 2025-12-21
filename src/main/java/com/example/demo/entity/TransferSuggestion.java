@@ -24,17 +24,16 @@ public class TransferSuggestion {
     private Integer quantity;
 
     @Column(nullable = false)
-    private String priority; // HIGH, MEDIUM, LOW
+    private String priority; 
 
     private LocalDateTime suggestedAt;
 
     @Column(nullable = false)
-    private String status = "PENDING"; // PENDING, APPROVED, REJECTED
+    private String status = "PENDING";
 
     @PrePersist
     protected void onCreate() {
         suggestedAt = LocalDateTime.now();
     }
 
-    // getters and setters
 }

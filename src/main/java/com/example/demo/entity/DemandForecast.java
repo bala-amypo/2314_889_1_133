@@ -25,5 +25,5 @@ public class DemandForecast {
 
     private Double confidenceScore;
 
-    // getters and setters
+
 }

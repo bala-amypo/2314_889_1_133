@@ -31,5 +31,5 @@ public class InventoryLevel {
         lastUpdated = LocalDateTime.now();
     }
 
-    // getters and setters
+  
 }

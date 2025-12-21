@@ -22,5 +22,4 @@ public class Store {
     @Column(nullable = false)
     private Boolean active = true;
 
-    // getters and setters
 }
