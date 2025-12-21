@@ -31,28 +31,32 @@ public class InventoryLevelServiceImpl implements InventoryLevelService {
     }
 
     @Override
-    public InventoryLevel createOrUpdateInventory(InventoryLevel inventory) {
+    public InventoryLevel createOrUpdateInventory(InventoryLevel inventoryLevel) {
 
-        if (inventory.getQuantity() < 0) {
+        if (inventoryLevel.getQuantity() < 0) {
             throw new BadRequestException("Quantity must be >= 0");
         }
 
-        Store store = storeRepository.findById(inventory.getStore().getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Store not found"));
+        Store store = storeRepository.findById(
+                inventoryLevel.getStore().getId())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Store not found"));
 
-        Product product = productRepository.findById(inventory.getProduct().getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+        Product product = productRepository.findById(
+                inventoryLevel.getProduct().getId())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Product not found"));
 
         return inventoryLevelRepository
                 .findByStoreAndProduct(store, product)
                 .map(existing -> {
-                    existing.setQuantity(inventory.getQuantity());
+                    existing.setQuantity(inventoryLevel.getQuantity());
                     return inventoryLevelRepository.save(existing);
                 })
                 .orElseGet(() -> {
-                    inventory.setStore(store);
-                    inventory.setProduct(product);
-                    return inventoryLevelRepository.save(inventory);
+                    inventoryLevel.setStore(store);
+                    inventoryLevel.setProduct(product);
+                    return inventoryLevelRepository.save(inventoryLevel);
                 });
     }
 
@@ -60,7 +64,8 @@ public class InventoryLevelServiceImpl implements InventoryLevelService {
     public List<InventoryLevel> getInventoryForStore(Long storeId) {
 
         storeRepository.findById(storeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Store not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Store not found"));
 
         return inventoryLevelRepository.findByStore_Id(storeId);
     }
@@ -69,7 +74,8 @@ public class InventoryLevelServiceImpl implements InventoryLevelService {
     public List<InventoryLevel> getInventoryForProduct(Long productId) {
 
         productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Product not found"));
 
         return inventoryLevelRepository.findByProduct_Id(productId);
     }
@@ -78,12 +84,16 @@ public class InventoryLevelServiceImpl implements InventoryLevelService {
     public InventoryLevel getInventory(Long storeId, Long productId) {
 
         Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Store not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Store not found"));
 
         Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Product not found"));
 
-        return inventoryLevelRepository.findByStoreAndProduct(store, product)
-                .orElseThrow(() -> new ResourceNotFoundException("Inventory not found"));
+        return inventoryLevelRepository
+                .findByStoreAndProduct(store, product)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Inventory not found"));
     }
 }

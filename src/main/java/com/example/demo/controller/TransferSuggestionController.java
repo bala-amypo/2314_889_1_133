@@ -19,7 +19,6 @@ public class TransferSuggestionController {
         this.inventoryBalancerService = inventoryBalancerService;
     }
 
-    // Generate transfer suggestions for a product
     @PostMapping("/generate/{productId}")
     public ResponseEntity<List<TransferSuggestion>> generateSuggestions(
             @PathVariable Long productId) {
@@ -27,7 +26,7 @@ public class TransferSuggestionController {
                 inventoryBalancerService.generateSuggestions(productId));
     }
 
-    // Get suggestions for a store
+   
     @GetMapping("/store/{storeId}")
     public ResponseEntity<List<TransferSuggestion>> getSuggestionsForStore(
             @PathVariable Long storeId) {
@@ -35,7 +34,6 @@ public class TransferSuggestionController {
                 inventoryBalancerService.getSuggestionsForStore(storeId));
     }
 
-    // Get suggestion by ID
     @GetMapping("/{id}")
     public ResponseEntity<TransferSuggestion> getSuggestionById(
             @PathVariable Long id) {
