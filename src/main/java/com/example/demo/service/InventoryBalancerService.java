@@ -1,13 +1,13 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import java.util.List;
-import com.example.demo.entity.TransferSuggestion;
+// import java.util.List;
+// import com.example.demo.entity.TransferSuggestion;
 
-public interface InventoryBalancerService {
+// public interface InventoryBalancerService {
 
-    List<TransferSuggestion> generateSuggestions(Long productId);
+//     List<TransferSuggestion> generateSuggestions(Long productId);
 
-    List<TransferSuggestion> getSuggestionsForStore(Long storeId);
+//     List<TransferSuggestion> getSuggestionsForStore(Long storeId);
 
-    TransferSuggestion getSuggestionById(Long id);
-}
+//     TransferSuggestion getSuggestionById(Long id);
+// }
