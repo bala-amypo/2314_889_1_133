@@ -82,12 +82,15 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
                 if (deficit > 0) {
 
                     TransferSuggestion suggestion = new TransferSuggestion();
-                    suggestion.setSourceStore(sourceInv.getStore());
-                    suggestion.setTargetStore(targetInv.getStore());
-                    suggestion.setProduct(product);
-                    suggestion.setQuantity(Math.min(surplus, deficit));
-                    suggestion.setPriority("HIGH");
-                    suggestion.setStatus("PENDING");
+                    private Store sourceStore;
+                    private Store targetStore;
+private Product product;
+private int quantity;
+private String priority;
+private String status;
+
+// Add getters and setters for all fields
+;
 
                     suggestions.add(
                             transferSuggestionRepository.save(suggestion)
