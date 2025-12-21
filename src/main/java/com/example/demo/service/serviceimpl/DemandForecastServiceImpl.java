@@ -1,40 +1,73 @@
-package com.example.demo.service.serviceimpl;
-
-import com.example.demo.entity.DemandForecast;
-import com.example.demo.repository.DemandForecastRepository;
-import com.example.demo.service.DemandForecastService;
-import org.springframework.stereotype.Service;
+package com.example.demo.service.impl;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.DemandForecast;
+import com.example.demo.entity.Product;
+import com.example.demo.entity.Store;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.DemandForecastRepository;
+import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.StoreRepository;
+import com.example.demo.service.DemandForecastService;
 
 @Service
+public class DemandForecastServiceImpl implements DemandForecastService {
 
-public class DemandForecastServiceImpl implements DemandForecastService{
-    private final DemandForecastRepository demandrepo;
+    private final DemandForecastRepository demandForecastRepository;
+    private final StoreRepository storeRepository;
+    private final ProductRepository productRepository;
 
-    public DemandForecastServiceImpl(DemandForecastRepository demandrepo){
-        this.demandrepo = demandrepo;
+    public DemandForecastServiceImpl(
+            DemandForecastRepository demandForecastRepository,
+            StoreRepository storeRepository,
+            ProductRepository productRepository) {
+        this.demandForecastRepository = demandForecastRepository;
+        this.storeRepository = storeRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
-    public DemandForecast createForecast(DemandForecast forecast){
-        if(forecast.getForecastDate().isBefore(LocalDate.now())){
-            throw new RuntimeException("Forecast date must be in the future");
+    public DemandForecast createForecast(DemandForecast forecast) {
+
+        if (forecast.getForecastDate().isBefore(LocalDate.now())) {
+            throw new BadRequestException("Forecast date must be in the future");
         }
-        return demandrepo.save(forecast);
+
+        if (forecast.getPredictedDemand() < 0) {
+            throw new BadRequestException("Predicted demand must be >= 0");
+        }
+
+        return demandForecastRepository.save(forecast);
     }
 
     @Override
-    public DemandForecast getForecast(Long storeId,Long productId){
+    public List<DemandForecast> getForecastsForStore(Long storeId) {
 
-        boolean flag = true;
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Store not found"));
 
-        if(demandrepo.findByStoreIdAndProductId(storeId,productId)){
-            flag = false;
-        }
-        if(flag){
-            throw new RuntimeException("No forecast found");
-        }
-        return demandrepo.findByStoreIdAndProductId(storeId,productId);
+        return demandForecastRepository.findByStore_Id(store.getId());
+    }
+
+    @Override
+    public DemandForecast getForecast(Long storeId, Long productId) {
+
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Store not found"));
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+
+        return demandForecastRepository
+                .findByStoreAndProductAndForecastDateAfter(
+                        store, product, LocalDate.now())
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Forecast not found"));
     }
 }
