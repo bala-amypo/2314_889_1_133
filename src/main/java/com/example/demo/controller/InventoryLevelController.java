@@ -18,15 +18,14 @@ public class InventoryLevelController {
         this.inventoryLevelService = inventoryLevelService;
     }
 
-    
+  
     @PostMapping
     public ResponseEntity<InventoryLevel> createOrUpdateInventory(
-            @RequestBody InventoryLevel inventoryLevel) {
+            @RequestBody InventoryLevel inventory) {
         return ResponseEntity.ok(
-                inventoryLevelService.createOrUpdateInventory(inventoryLevel));
+                inventoryLevelService.createOrUpdateInventory(inventory));
     }
 
-    
     @GetMapping("/store/{storeId}")
     public ResponseEntity<List<InventoryLevel>> getInventoryForStore(
             @PathVariable Long storeId) {
@@ -34,7 +33,7 @@ public class InventoryLevelController {
                 inventoryLevelService.getInventoryForStore(storeId));
     }
 
-   
+  
     @GetMapping("/product/{productId}")
     public ResponseEntity<List<InventoryLevel>> getInventoryForProduct(
             @PathVariable Long productId) {
