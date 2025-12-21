@@ -14,7 +14,7 @@ public class InventoryLevelController {
         this.inventoryService = inventoryService;
     }
     @PutMapping("/update")
-    public Inventory UpdateInventory(
+    public InventoryLevel UpdateInventory(
             @RequestParam Long storeId,
             @RequestParam Long productId,
             @RequestParam int quantity) {
@@ -22,7 +22,7 @@ public class InventoryLevelController {
         return inventoryService.updateInventory(storeId, productId, quantity);
     }
     @GetMapping("/store/{storeId}")
-    public Inventory Getinventoryfortore(@PathVariable Long storeId) {
+    public InventoryLevel Getinventoryfortore(@PathVariable Long storeId) {
         return inventoryService.getInventoryByStore(storeId);
     }
 }

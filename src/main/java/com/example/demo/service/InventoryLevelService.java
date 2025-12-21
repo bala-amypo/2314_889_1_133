@@ -1,6 +1,6 @@
 package com.example.demo.service;
 import java.util.List;
-import com.example.demo.entity.InventoryLevelService;
+import com.example.demo.entity.InventoryLevel;
 
 public interface InventoryLevelService{
      void updateInventory(Long storeId,Long productId,Integer quantity);
