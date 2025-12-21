@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Store;
 import java.util.List;
+import com.example.demo.entity.Store;
 
 public interface StoreService {
 
