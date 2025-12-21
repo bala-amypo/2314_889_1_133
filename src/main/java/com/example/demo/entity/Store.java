@@ -3,8 +3,7 @@ package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 @Entity
 @Table (name = "Store")
@@ -13,7 +12,7 @@ public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false, unique = true)
     private String storeName;
     private String address;
     private String region;
