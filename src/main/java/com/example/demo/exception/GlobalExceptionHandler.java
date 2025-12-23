@@ -22,9 +22,9 @@ public class GlobalExceptionHandler {
         error.put("error", "Bad Request");
         error.put("message", ex.getMessage());
 
-        return ResponseEntity<Map<String,Object>(error,HttpStatus.BAD_REQUEST);
-                // .status(HttpStatus.BAD_REQUEST)
-                // .body(error);
+        return ResponseEntity
+                 .body(error)
+                 .status(HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
