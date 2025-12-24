@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(
@@ -22,7 +23,8 @@ public class Store {
     @Column(nullable = false)
     private Boolean active = true;
 
-    
+    @OnetoMany(mappedby = "")
+    public List<InventoryLevel> inventorylevel;
 
     public Long getId() {
         return id;
