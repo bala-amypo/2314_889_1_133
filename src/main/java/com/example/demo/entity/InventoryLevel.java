@@ -14,10 +14,12 @@ public class InventoryLevel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="store_id")
     private Store store;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name=)
     private Product product;
 
     @Column(nullable = false)
