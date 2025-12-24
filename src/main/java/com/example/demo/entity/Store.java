@@ -23,7 +23,7 @@ public class Store {
     @Column(nullable = false)
     private Boolean active = true;
 
-    @OnetoMany(mappedby = "")
+    @OnetoMany(mappedby = "Store")
     public List<InventoryLevel> inventorylevel;
 
     public Long getId() {
