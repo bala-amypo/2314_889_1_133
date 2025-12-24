@@ -1,5 +1,4 @@
-package com.example.demo.entity;
-
+package com.example.OneToMany.entity;
 import jakarta.persistence.*;
 import java.util.*;
 
@@ -23,7 +22,7 @@ public class Store {
     @Column(nullable = false)
     private Boolean active = true;
 
-    @OnetoMany(mappedby = "Store")
+    @OnetoMany(mappedby = "InventoryLevel")
     public List<InventoryLevel> inventorylevel;
 
     public Long getId() {
