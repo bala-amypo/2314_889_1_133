@@ -1,4 +1,5 @@
 package com.example.OneToMany.entity;
+
 import jakarta.persistence.*;
 import java.util.*;
 
@@ -22,8 +23,8 @@ public class Store {
     @Column(nullable = false)
     private Boolean active = true;
 
-    @OnetoMany(mappedby = "InventoryLevel")
-    public List<InventoryLevel> inventorylevel;
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<InventoryLevel> inventoryLevels = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -45,7 +46,10 @@ public class Store {
         return active;
     }
 
-  
+    public List<InventoryLevel> getInventoryLevels() {
+        return inventoryLevels;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -64,5 +68,9 @@ public class Store {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public void setInventoryLevels(List<InventoryLevel> inventoryLevels) {
+        this.inventoryLevels = inventoryLevels;
     }
 }
