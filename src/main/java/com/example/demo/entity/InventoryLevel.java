@@ -19,7 +19,7 @@ public class InventoryLevel {
     private Store store;
 
     @ManyToOne
-    @JoinColumn(name=)
+    @JoinColumn(name="product_id")
     private Product product;
 
     @Column(nullable = false)
