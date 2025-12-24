@@ -14,17 +14,18 @@ public class InventoryLevel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name="store_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name="store_id", nullable = false)
     private Store store;
 
-    @ManyToOne
-    @JoinColumn(name="product_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name="product_id", nullable = false)
     private Product product;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private Integer quantity = 0;
 
+    @Column(name = "last_updated")
     private LocalDateTime lastUpdated;
 
     @PrePersist
@@ -33,7 +34,7 @@ public class InventoryLevel {
         lastUpdated = LocalDateTime.now();
     }
 
- 
+    // -------- Getters --------
 
     public Long getId() {
         return id;
@@ -55,7 +56,8 @@ public class InventoryLevel {
         return lastUpdated;
     }
 
-  
+    // -------- Setters --------
+
     public void setId(Long id) {
         this.id = id;
     }
