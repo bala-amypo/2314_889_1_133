@@ -1,28 +1,30 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.AuthRequestDto;
+import com.example.demo.dto.AuthResponseDto;
 import com.example.demo.dto.RegisterRequestDto;
 import com.example.demo.service.AuthService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService service;
 
-    @PostMapping("/login")
-    public Map<String, String> login(@RequestBody AuthRequestDto dto) {
-        String token = authService.login(dto);
-        return Map.of("token", token);
+    public AuthController(AuthService service) {
+        this.service = service;
     }
 
     @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
     public void register(@RequestBody RegisterRequestDto dto) {
-        authService.register(dto);
+        service.register(dto);
+    }
+
+    @PostMapping("/login")
+    public AuthResponseDto login(@RequestBody AuthRequestDto dto) {
+        return service.login(dto);
     }
 }
