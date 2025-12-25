@@ -4,5 +4,5 @@ public class SimpleStatusServlet extends HttpServlet{
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/plain");
         resp.getWriter().write("Multi-Location Inventory Balancer is running");
-    } 
+    }
 }
