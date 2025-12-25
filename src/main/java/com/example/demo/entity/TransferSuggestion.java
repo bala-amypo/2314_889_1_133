@@ -28,6 +28,4 @@ public class TransferSuggestion {
     public void prePersist() {
         generatedAt = LocalDateTime.now();
     }
-
-    // getters & setters
 }

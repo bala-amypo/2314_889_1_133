@@ -13,7 +13,6 @@ public class Store {
     private String address;
     private String region;
 
-    private boolean active = true;
-
-    // getters & setters
+    private boolean active = true; // DEFAULT TRUE (important)
 }
+

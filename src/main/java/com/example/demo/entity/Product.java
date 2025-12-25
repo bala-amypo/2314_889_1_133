@@ -16,6 +16,4 @@ public class Product {
     private String category;
 
     private boolean active = true;
-
-    // getters & setters
 }

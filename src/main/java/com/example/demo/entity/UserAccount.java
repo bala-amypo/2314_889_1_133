@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "user_accounts", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     private String password;
@@ -29,6 +30,4 @@ public class UserAccount {
     public void preUpdate() {
         updatedAt = LocalDateTime.now();
     }
-
-    // getters & setters
 }

@@ -18,6 +18,5 @@ public class DemandForecast {
 
     private Integer forecastedDemand;
     private LocalDate forecastDate;
-
-   
 }
+
