@@ -1,5 +1,8 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+
 @Entity
-@Getter @Setter
 public class Product {
 
     @Id
@@ -13,4 +16,6 @@ public class Product {
     private String category;
 
     private boolean active = true;
+
+    // getters & setters
 }

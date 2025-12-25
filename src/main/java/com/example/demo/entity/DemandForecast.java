@@ -1,5 +1,9 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
 @Entity
-@Getter @Setter
 public class DemandForecast {
 
     @Id
@@ -14,4 +18,6 @@ public class DemandForecast {
 
     private Integer forecastedDemand;
     private LocalDate forecastDate;
+
+    // getters & setters
 }

@@ -1,5 +1,9 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 @Entity
-@Getter @Setter
 @Table(uniqueConstraints = {
         @UniqueConstraint(columnNames = {"store_id", "product_id"})
 })
@@ -20,8 +24,14 @@ public class InventoryLevel {
     private LocalDateTime lastUpdated;
 
     @PrePersist
-    @PreUpdate
-    public void touch() {
+    public void prePersist() {
         lastUpdated = LocalDateTime.now();
     }
+
+    @PreUpdate
+    public void preUpdate() {
+        lastUpdated = LocalDateTime.now();
+    }
+
+    // getters & setters
 }

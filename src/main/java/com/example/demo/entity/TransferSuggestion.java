@@ -1,5 +1,9 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 @Entity
-@Getter @Setter
 public class TransferSuggestion {
 
     @Id
@@ -24,4 +28,6 @@ public class TransferSuggestion {
     public void prePersist() {
         generatedAt = LocalDateTime.now();
     }
+
+    // getters & setters
 }

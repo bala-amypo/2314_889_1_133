@@ -1,5 +1,8 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+
 @Entity
-@Getter @Setter
 public class Store {
 
     @Id
@@ -11,4 +14,6 @@ public class Store {
     private String region;
 
     private boolean active = true;
+
+    // getters & setters
 }
