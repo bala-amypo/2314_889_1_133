@@ -1,43 +1,21 @@
-// package com.example.demo.controller;
+package com.example.demo.controller;
 
-// import java.util.List;
+import com.example.demo.entity.TransferSuggestion;
+import com.example.demo.service.InventoryBalancerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-// import org.springframework.http.ResponseEntity;
-// import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
-// import com.example.demo.entity.TransferSuggestion;
-// import com.example.demo.service.InventoryBalancerService;
+@RestController
+@RequestMapping("/api/balancer")
+public class InventoryBalancerController {
 
-// @RestController
-// @RequestMapping("/api/suggestions")
-// public class TransferSuggestionController {
+    @Autowired
+    private InventoryBalancerService inventoryBalancerService;
 
-//     private final InventoryBalancerService inventoryBalancerService;
-
-//     public TransferSuggestionController(
-//             InventoryBalancerService inventoryBalancerService) {
-//         this.inventoryBalancerService = inventoryBalancerService;
-//     }
-
-//     @PostMapping("/generate/{productId}")
-//     public ResponseEntity<List<TransferSuggestion>> generateSuggestions(
-//             @PathVariable Long productId) {
-//         return ResponseEntity.ok(
-//                 inventoryBalancerService.generateSuggestions(productId));
-//     }
-
-   
-//     @GetMapping("/store/{storeId}")
-//     public ResponseEntity<List<TransferSuggestion>> getSuggestionsForStore(
-//             @PathVariable Long storeId) {
-//         return ResponseEntity.ok(
-//                 inventoryBalancerService.getSuggestionsForStore(storeId));
-//     }
-
-//     @GetMapping("/{id}")
-//     public ResponseEntity<TransferSuggestion> getSuggestionById(
-//             @PathVariable Long id) {
-//         return ResponseEntity.ok(
-//                 inventoryBalancerService.getSuggestionById(id));
-//     }
-// }
+    @GetMapping("/suggest/{productId}")
+    public List<TransferSuggestion> generateSuggestions(@PathVariable Long productId) {
+        return inventoryBalancerService.generateSuggestions(productId);
+    }
+}
