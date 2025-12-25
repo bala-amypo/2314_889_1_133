@@ -1,39 +1,27 @@
-package com.example.demo.entity;
-
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "transfer_suggestions")
+@Getter @Setter
 public class TransferSuggestion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
-    private Store sourceStore;
-
-    @ManyToOne(optional = false)
-    private Store targetStore;
-
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Product product;
 
-    @Column(nullable = false)
-    private Integer quantity;
+    @ManyToOne
+    private Store sourceStore;
 
-    @Column(nullable = false)
-    private String priority; 
+    @ManyToOne
+    private Store targetStore;
 
-    private LocalDateTime suggestedAt;
+    private Integer suggestedQuantity;
+    private String reason;
 
-    @Column(nullable = false)
-    private String status = "PENDING";
+    private LocalDateTime generatedAt;
 
     @PrePersist
-    protected void onCreate() {
-        suggestedAt = LocalDateTime.now();
+    public void prePersist() {
+        generatedAt = LocalDateTime.now();
     }
-
 }
