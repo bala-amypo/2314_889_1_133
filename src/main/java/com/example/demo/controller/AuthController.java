@@ -1,28 +1,28 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.UserAccount;
+import com.example.demo.dto.AuthRequestDto;
+import com.example.demo.dto.RegisterRequestDto;
 import com.example.demo.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
     private AuthService authService;
 
-    @PostMapping("/register")
-    public ResponseEntity<UserAccount> register(@RequestBody UserAccount user) {
-        UserAccount savedUser = authService.register(user);
-        return ResponseEntity.ok(savedUser);
+    @PostMapping("/login")
+    public Map<String, String> login(@RequestBody AuthRequestDto dto) {
+        String token = authService.login(dto);
+        return Map.of("token", token);
     }
 
- 
-    @PostMapping("/login")
-    public ResponseEntity<UserAccount> login(@RequestParam String email, @RequestParam String password) {
-        UserAccount user = authService.login(email, password);
-        return ResponseEntity.ok(user);
+    @PostMapping("/register")
+    public void register(@RequestBody RegisterRequestDto dto) {
+        authService.register(dto);
     }
 }
