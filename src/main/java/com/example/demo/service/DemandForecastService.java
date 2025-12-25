@@ -1,13 +1,17 @@
-package com.example.demo.service;
+@Service
+@RequiredArgsConstructor
+public class DemandForecastService {
 
-import java.util.List;
-import com.example.demo.entity.DemandForecast;
+    private final DemandForecastRepository repo;
 
-public interface DemandForecastService {
+    public DemandForecast createForecast(DemandForecast f) {
+        if (f.getForecastDate().isBefore(LocalDate.now()))
+            throw new BadRequestException("Past date");
 
-    DemandForecast createForecast(DemandForecast forecast);
+        return repo.save(f);
+    }
 
-    List<DemandForecast> getForecastsForStore(Long storeId);
-
-    DemandForecast getForecast(Long storeId, Long productId);
+    public List<DemandForecast> getForecastsForStore(Long storeId) {
+        return repo.findByStore_Id(storeId);
+    }
 }
