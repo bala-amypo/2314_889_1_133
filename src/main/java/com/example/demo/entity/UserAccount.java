@@ -1,5 +1,9 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 @Entity
-@Getter @Setter
 public class UserAccount {
 
     @Id
@@ -25,4 +29,6 @@ public class UserAccount {
     public void preUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+    // getters & setters
 }
