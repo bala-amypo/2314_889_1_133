@@ -1,5 +1,5 @@
 package com.example.demo.dto;
-
+import java.lang.String;
 public class RegisterRequestDto {
 
     private String email;
