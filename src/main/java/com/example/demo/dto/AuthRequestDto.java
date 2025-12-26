@@ -1,8 +1,6 @@
 package com.example.demo.dto;
 import lombok.*;
-
-@Getter
-@Setter
+@Builder
 public class AuthRequestDto {
 
     private String email;

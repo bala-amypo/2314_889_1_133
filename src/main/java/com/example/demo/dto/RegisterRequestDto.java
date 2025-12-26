@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 import java.lang.String;
+import lombok.*;
+@Builder
 public class RegisterRequestDto {
 
     private String email;
