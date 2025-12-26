@@ -42,8 +42,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             String role = jwtUtil.extractRole(jwt);
             if (jwtUtil.validateToken(jwt, userEmail)) {
+                // Roles must be prefixed with ROLE_ for hasRole() to work
+                String authorityRole = role.startsWith("ROLE_") ? role : "ROLE_" + role;
+                
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        userEmail, null, Collections.singletonList(new SimpleGrantedAuthority(role))
+                        userEmail, null, Collections.singletonList(new SimpleGrantedAuthority(authorityRole))
                 );
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
