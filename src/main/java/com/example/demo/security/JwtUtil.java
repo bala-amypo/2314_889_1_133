@@ -1,10 +1,10 @@
-package sbs.rosedev.springFirst.security;
+package com.example.demo.security;
 
 import java.util.Date;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import sbs.rosedev.springFirst.entity.UserAccount;
+import com.example.demo.entity.UserAccount;
 
 // @Component
 public class JwtUtil {
