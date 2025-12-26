@@ -13,6 +13,6 @@ public class SimpleStatusServlet extends HttpServlet {
         resp.setStatus(HttpServletResponse.SC_OK);
         
         // Test cases t04-t06 expect the exact string "running"
-        resp.getWriter().write("running");
+        resp.getWriter().write("Multi-Location Inventory Balancer is running");
     }
 }
