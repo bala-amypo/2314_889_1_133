@@ -5,7 +5,7 @@ import io.jsonwebtoken.security.Keys;
 
 import java.security.Key;
 import java.util.Date;
-
+@component
 public class JwtUtil {
 
     private static final String SECRET = "mysecretkeymysecretkeymysecretkey123";
