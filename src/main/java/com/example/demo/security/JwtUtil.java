@@ -7,54 +7,83 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.Map;
+import java.util.function.Function;
 
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.secret:my-secret-key-1234567890}")
+    @Value("${jwt.secret:my-secret-key-12345678901234567890}")
     private String secret;
 
     @Value("${jwt.expiration:86400000}") // 1 day default
-    private long expirationMs;
+    private long expirationMillis;
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(String username, String role) {
-        Date now = new Date();
-        Date expiry = new Date(now.getTime() + expirationMs);
-
+    // -----------------------------------------------------
+    // Token Creation
+    // -----------------------------------------------------
+    public String generateToken(Map<String, Object> claims, String username) {
         return Jwts.builder()
+                .setClaims(claims)
                 .setSubject(username)
-                .claim("role", role)
-                .setIssuedAt(now)
-                .setExpiration(expiry)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expirationMillis))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public String extractUsername(String token) {
-        return parseClaims(token).getBody().getSubject();
+    // -----------------------------------------------------
+    // Extract Claims / Username / Expiration
+    // -----------------------------------------------------
+    public String getUsername(String token) {
+        return getClaim(token, Claims::getSubject);
     }
 
-    public String extractRole(String token) {
-        return (String) parseClaims(token).getBody().get("role");
+    public Date getExpirationDate(String token) {
+        return getClaim(token, Claims::getExpiration);
     }
 
-    public boolean isTokenValid(String token) {
-        try {
-            parseClaims(token);
-            return true;
-        } catch (JwtException | IllegalArgumentException ex) {
-            return false;
-        }
+    public <T> T getClaim(String token, Function<Claims, T> extractor) {
+        Claims claims = extractAllClaims(token);
+        return extractor.apply(claims);
     }
 
-    private Jws<Claims> parseClaims(String token) {
+    private Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
-                .parseClaimsJws(token);
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    // -----------------------------------------------------
+    // Validation
+    // -----------------------------------------------------
+    public boolean isTokenExpired(String token) {
+        return getExpirationDate(token).before(new Date());
+    }
+
+    public boolean isTokenValid(String token, String expectedUsername) {
+        String username = getUsername(token);
+        return username.equals(expectedUsername) && !isTokenExpired(token);
+    }
+
+    // -----------------------------------------------------
+    // Configuration Helpers for Tests
+    // -----------------------------------------------------
+    public long getExpirationMillis() {
+        return expirationMillis;
+    }
+
+    public long getRemainingValidity(String token) {
+        return getExpirationDate(token).getTime() - System.currentTimeMillis();
+    }
+
+    public Date getIssuedAt(String token) {
+        return getClaim(token, Claims::getIssuedAt);
     }
 }
