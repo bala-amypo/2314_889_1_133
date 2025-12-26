@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 public class SimpleStatusServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
         PrintWriter out = resp.getWriter();
         out.print("Multi-Location Inventory Balancer is running");
