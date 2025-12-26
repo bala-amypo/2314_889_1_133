@@ -83,14 +83,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.example.demo.security.JwtFilter;
+// import com.example.demo.security.JwtFilter;
 
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private JwtFilter jwtFilter;
+    // @Autowired
+    // private JwtFilter jwtFilter;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -109,11 +109,11 @@ public class SecurityConfig {
                     "/v3/api-docs/**"
                 ).permitAll()
                 .anyRequest().permitAll()
-            )
-            .addFilterBefore(
-                jwtFilter,
-                UsernamePasswordAuthenticationFilter.class
             );
+            // .addFilterBefore(
+            //     jwtFilter,
+            //     UsernamePasswordAuthenticationFilter.class
+            // );
 
         return http.build();
     }
