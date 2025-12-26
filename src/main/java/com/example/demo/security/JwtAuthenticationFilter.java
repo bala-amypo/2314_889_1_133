@@ -28,7 +28,7 @@ public class JwtAuthenticationFilter extends GenericFilter {
             String token = header.substring(7);
 
             if (jwtUtil.validateToken(token)) {
-                String username = jwtUtil.extractUsername(token);
+                String username = jwtUtil.getUsername(token);
                 UserDetails user = userDetailsService.loadUserByUsername(username);
 
                 var auth = new UsernamePasswordAuthenticationToken(
