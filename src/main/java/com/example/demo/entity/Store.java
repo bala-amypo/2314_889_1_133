@@ -28,6 +28,6 @@ public class Store {
     public void setAddress(String address) { this.address = address; }
     public String getRegion() { return region; }
     public void setRegion(String region) { this.region = region; }
-    public boolean isActive() { return active; }
+    public boolean getActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
 }

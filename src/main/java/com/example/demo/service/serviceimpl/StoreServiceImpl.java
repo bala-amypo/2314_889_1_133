@@ -8,18 +8,18 @@ import java.util.List;
 import java.util.Optional; // only if you use Optional anywhere
 
 @Service
-public class StoreServiceImpl extends StoreService{
+public class StoreServiceImpl implements StoreService{
 
     private final StoreRepository repo;
 
-    public StoreService(StoreRepository repo) {
+    public StoreServiceImpl(StoreRepository repo) {
         this.repo = repo;
     }
 
     public Store createStore(Store s) {
-        if (s.getActive() == null) {
-            s.setActive(true);   // default required by tests
-        }
+        // if (s.getActive() == null) {
+        //     s.setActive(true);   // default required by tests
+        // }
         return repo.save(s);
     }
 
