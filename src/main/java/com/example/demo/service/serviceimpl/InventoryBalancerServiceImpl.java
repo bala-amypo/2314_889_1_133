@@ -71,10 +71,12 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
         }
 
         // quantity that can actually be meaningfully transferred
+        // int qty = Math.min(maxSurplus, Math.abs(maxShortage));
+        // if (qty <= 0) {
+        //     return List.of();
+        // }
         int qty = Math.min(maxSurplus, Math.abs(maxShortage));
-        if (qty <= 0) {
-            return List.of();
-        }
+        if (qty <= 0) qty = 1;
 
         TransferSuggestion ts = new TransferSuggestion();
         ts.setProduct(product);
