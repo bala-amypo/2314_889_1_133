@@ -30,6 +30,8 @@ public class TransferSuggestion {
 
     @Column(nullable = false)
     private String status = "PENDING";
+    @Column(nullable = false)
+private String priority = "NORMAL";
 
     @Column(nullable = false)
     private LocalDateTime generatedAt;
