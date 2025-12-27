@@ -7,6 +7,39 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// @RestController
+// @RequestMapping("/api/products")
+// public class ProductController {
+
+//     private final ProductService service;
+
+//     public ProductController(ProductService service) {
+//         this.service = service;
+//     }
+
+//     @PostMapping
+//     @ResponseStatus(HttpStatus.CREATED)
+//     public Product create(@RequestBody Product product) {
+//         return service.createProduct(product);
+//     }
+
+//     @GetMapping("/{id}")
+//     public Product get(@PathVariable Long id) {
+//         return service.getProductById(id);
+//     }
+
+//     @GetMapping
+//     public List<Product> getAll() {
+//         return service.getAllProducts();
+//     }
+
+//     @DeleteMapping("/{id}")
+//     @ResponseStatus(HttpStatus.NO_CONTENT)
+//     public void deactivate(@PathVariable Long id) {
+//         service.deactivateProduct(id);
+//     }
+// }
+
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -18,9 +51,8 @@ public class ProductController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
-        return service.createProduct(product);
+        return service.createProduct(product); // returns 200 OK
     }
 
     @GetMapping("/{id}")
@@ -34,7 +66,6 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deactivate(@PathVariable Long id) {
         service.deactivateProduct(id);
     }
