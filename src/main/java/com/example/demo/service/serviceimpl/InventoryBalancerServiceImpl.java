@@ -76,7 +76,7 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
         ts.setTargetStore(underStore.getStore());
         ts.setSuggestedQuantity(qty);
         ts.setReason("Auto balance - surplus to deficit");
-        ts.setsGeneratedAt(LocalDate.now());
+        ts.setCreatedDate(LocalDate.now());
 
         transferSuggestionRepository.save(ts);
         return List.of(ts);
