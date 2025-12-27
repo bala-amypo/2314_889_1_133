@@ -23,17 +23,20 @@ public class TransferSuggestion {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Column(nullable = false)
     private Integer suggestedQuantity;
 
     private String reason;
 
+    @Column(nullable = false)
     private String status = "PENDING";
 
+    @Column(nullable = false)
     private LocalDateTime generatedAt;
 
     @PrePersist
-    public void setsGeneratedAt() {
-        generatedAt = LocalDateTime.now();
+    public void setGeneratedAtTimestamp() {
+        this.generatedAt = LocalDateTime.now();
     }
 
     // getters & setters
