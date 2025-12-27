@@ -16,4 +16,4 @@ public class SimpleStatusServlet extends HttpServlet {
         out.print("Multi-Location Inventory Balancer is running");
         out.flush();
     }
-}
+}  
