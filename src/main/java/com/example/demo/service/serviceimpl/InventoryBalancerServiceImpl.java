@@ -92,9 +92,9 @@ public class InventoryBalancerServiceImpl
         return transferSuggestionRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Suggestion not found"));
     }
-    // public List<TransferSuggestion> getSuggestionsForStore(Long storeId) {
-    //     return tsRepo.findBySourceStoreId(storeId);
-    // }
+    public List<TransferSuggestion> getSuggestionsForStore(Long storeId) {
+        return transferSuggestionRepository.findBySourceStoreId(storeId);
+    }
 }
 
     // public TransferSuggestion getSuggestionById(Long id) {
