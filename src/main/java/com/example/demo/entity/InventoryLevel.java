@@ -20,16 +20,17 @@ public class InventoryLevel {
 
     private Integer quantity;
 
-    @PrePersist
-    @PreUpdate
     private LocalDateTime lastUpdated;
 
-    @PrePersist
-    @PreUpdate
-    public void updateTimestamp() {
-        lastUpdated = LocalDateTime.now();
+   @PrePersist
+    public void prePersist() {
+        this.lastUpdated = LocalDateTime.now();
     }
 
+    @PreUpdate
+    public void preUpdate() {
+        this.lastUpdated = LocalDateTime.now();
+    }
     // getters & setters
     public Long getId() { return id; }
     public Store getStore() { return store; }

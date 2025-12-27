@@ -26,7 +26,6 @@ public class TransferSuggestion {
 
     private String status = "PENDING";
 
-    @PrePersist
     private LocalDateTime generatedAt;
 
     @PrePersist
