@@ -39,9 +39,9 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
         // }
 
         Product product = inventory.get(0).getProduct();
-        // if (!product.isActive()) {
-        //     throw new BadRequestException("Inactive product");
-        // }
+        if (!product.isActive()) {
+            throw new BadRequestException("Inactive product");
+        }
 
         List<TransferSuggestion> results = new ArrayList<>();
 
