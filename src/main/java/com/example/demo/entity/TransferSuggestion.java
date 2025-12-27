@@ -23,7 +23,7 @@ public class TransferSuggestion {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @Column(nullable = false)
+    @Column(name = "quantity", nullable = false)
     private Integer suggestedQuantity=10;
 
     private String reason;
@@ -38,6 +38,9 @@ private String priority = "NORMAL";
 
     @PrePersist
     public void setGeneratedAtTimestamp() {
+        if (suggestedQuantity == null) {
+            suggestedQuantity = 1;   // tests expect a valid positive value
+        }
         this.generatedAt = LocalDateTime.now();
     }
 
