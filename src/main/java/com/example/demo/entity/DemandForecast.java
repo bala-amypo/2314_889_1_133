@@ -19,6 +19,7 @@ public class DemandForecast {
 
     private LocalDate forecastDate;
 
+    @Column(name = "predicted_demand", nullable = false)
     private Integer forecastedDemand;
 
     private Double confidenceScore;
