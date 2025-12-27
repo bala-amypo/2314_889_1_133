@@ -7,7 +7,8 @@ import com.example.demo.service.InventoryBalancerService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDate;
-import java.util.ArrayList; import java.util.List;
+import java.util.ArrayList; 
+import java.util.List;
 
 
 @Service
@@ -52,11 +53,13 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
 
             int diff = inv.getQuantity() - demand;
 
+            // store with highest positive surplus
             if (diff > maxSurplus) {
                 maxSurplus = diff;
                 overStore = inv;
             }
 
+            // store with greatest negative shortage
             if (diff < maxShortage) {
                 maxShortage = diff;
                 underStore = inv;
@@ -67,18 +70,32 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
             return List.of();
         }
 
+        // quantity that can actually be meaningfully transferred
         int qty = Math.min(maxSurplus, Math.abs(maxShortage));
-        if (qty <= 0) return List.of();
+        if (qty <= 0) {
+            return List.of();
+        }
 
         TransferSuggestion ts = new TransferSuggestion();
         ts.setProduct(product);
         ts.setSourceStore(overStore.getStore());
         ts.setTargetStore(underStore.getStore());
         ts.setSuggestedQuantity(qty);
-        ts.setReason("Auto balance - surplus to deficit");
-        ts.setCreatedDate(LocalDate.now());
+        ts.setReason("Auto balance - move surplus to deficit");
+        // status + generatedAt handled by defaults / @PrePersist
 
         transferSuggestionRepository.save(ts);
         return List.of(ts);
+    }
+
+    @Override
+    public TransferSuggestion getSuggestionById(Long id) {
+        return transferSuggestionRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Suggestion not found"));
+    }
+
+    @Override
+    public List<TransferSuggestion> getSuggestionsForStore(Long storeId) {
+        return transferSuggestionRepository.findBySourceStoreId(storeId);
     }
 }
