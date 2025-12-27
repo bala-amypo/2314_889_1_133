@@ -17,7 +17,7 @@ public class StoreServiceImpl implements StoreService{
     }
 
     public Store createStore(Store s) {
-        if (s.getActive() == null) {
+        if (s.isActive() == null) {
             s.setActive(true);   // default required by tests
         }
         return repo.save(s);
