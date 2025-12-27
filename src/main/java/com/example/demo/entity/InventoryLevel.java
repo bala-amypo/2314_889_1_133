@@ -20,6 +20,8 @@ public class InventoryLevel {
 
     private Integer quantity;
 
+    @PrePersist
+    @PreUpdate
     private LocalDateTime lastUpdated;
 
     @PrePersist
