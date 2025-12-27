@@ -7,6 +7,44 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// @RestController
+// @RequestMapping("/api/stores")
+// public class StoreController {
+
+//     private final StoreService service;
+
+//     public StoreController(StoreService service) {
+//         this.service = service;
+//     }
+
+//     @PostMapping
+//     @ResponseStatus(HttpStatus.CREATED)
+//     public Store create(@RequestBody Store store) {
+//         return service.createStore(store);
+//     }
+
+//     @GetMapping("/{id}")
+//     public Store get(@PathVariable Long id) {
+//         return service.getStoreById(id);
+//     }
+
+//     @GetMapping
+//     public List<Store> getAll() {
+//         return service.getAllStores();
+//     }
+
+//     @PutMapping("/{id}")
+//     public Store update(@PathVariable Long id, @RequestBody Store store) {
+//         return service.updateStore(id, store);
+//     }
+
+//     @DeleteMapping("/{id}")
+//     @ResponseStatus(HttpStatus.NO_CONTENT)
+//     public void deactivate(@PathVariable Long id) {
+//         service.deactivateStore(id);
+//     }
+// }
+
 @RestController
 @RequestMapping("/api/stores")
 public class StoreController {
@@ -18,9 +56,8 @@ public class StoreController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public Store create(@RequestBody Store store) {
-        return service.createStore(store);
+        return service.createStore(store); // returns 200 OK
     }
 
     @GetMapping("/{id}")
@@ -39,7 +76,6 @@ public class StoreController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deactivate(@PathVariable Long id) {
         service.deactivateStore(id);
     }
