@@ -24,7 +24,7 @@ public class TransferSuggestion {
     private Product product;
 
     @Column(nullable = false)
-    private Integer suggestedQuantity;
+    private Integer suggestedQuantity=10;
 
     private String reason;
 
