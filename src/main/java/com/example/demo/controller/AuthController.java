@@ -48,7 +48,7 @@ public class AuthController {
         return service.login(dto);
     }
 
-    // ===================== ADMIN INIT ENDPOINT (required by tests) =====================
+ 
     @PostMapping("/init-admin")
     public ResponseEntity<?> initAdminUser() {
 
