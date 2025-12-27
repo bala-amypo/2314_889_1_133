@@ -49,7 +49,7 @@ public class DemandForecastServiceImpl implements DemandForecastService {
             throw new BadRequestException("Forecast date must be in future");
         }
 
-        return demandForecastRepository.save(forecast);
+        return repo.save(forecast);
     }
     // @Override
     // public DemandForecast createForecast(DemandForecast forecast) {
