@@ -11,13 +11,16 @@ public class TransferSuggestion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "source_store_id", nullable = false)
     private Store sourceStore;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "source_store_id", nullable = false)
     private Store targetStore;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "source_store_id", nullable = false)
     private Product product;
 
     private Integer suggestedQuantity;

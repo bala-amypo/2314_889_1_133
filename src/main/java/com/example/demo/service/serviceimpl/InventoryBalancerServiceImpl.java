@@ -86,7 +86,7 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
         ts.setReason("Auto balance - move surplus to deficit");
         // status + generatedAt handled by defaults / @PrePersist
 
-        transferSuggestionRepository.save(ts);
+        transferSuggestionRepository.saveAndFlush(ts);
         return List.of(ts);
     }
 
