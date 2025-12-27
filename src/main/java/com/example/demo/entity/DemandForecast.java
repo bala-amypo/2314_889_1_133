@@ -4,7 +4,12 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "demand_forecasts")
+@Table(
+    name = "demand_forecasts",
+    uniqueConstraints = @UniqueConstraint(
+        columnNames = {"product_id", "store_id", "forecast_date"}
+    )
+)
 public class DemandForecast {
 
     @Id
@@ -12,21 +17,32 @@ public class DemandForecast {
     private Long id;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 
+    @Column(name = "forecast_date", nullable = false)
     private LocalDate forecastDate;
 
     @Column(name = "predicted_demand", nullable = false)
     private Integer forecastedDemand;
 
-    private Double confidenceScore;
+    @Column(nullable = false)
+    private Double confidenceScore = 1.0;
+
     @PrePersist
-    public void validateForecast() {
-    if (forecastedDemand == null) {
-        forecastedDemand = 0; // or throw BadRequestException if the tests expect it
+    public void initDefaults() {
+        if (forecastDate == null) {
+            forecastDate = LocalDate.now();
+        }
+        if (forecastedDemand == null) {
+            forecastedDemand = 0;
+        }
+        if (confidenceScore == null) {
+            confidenceScore = 1.0;
         }
     }
 
