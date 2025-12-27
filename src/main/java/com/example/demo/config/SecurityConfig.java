@@ -43,7 +43,7 @@ public class SecurityConfig {
                     "/v3/api-docs/**",
                     "/simple-status"
                 ).permitAll()
-                .requestMatchers("/api/**").authenticated()
+                // .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll()
             );
 
