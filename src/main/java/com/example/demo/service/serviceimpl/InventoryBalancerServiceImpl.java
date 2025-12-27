@@ -34,14 +34,14 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
     public List<TransferSuggestion> generateSuggestions(Long productId) {
 
         List<InventoryLevel> inventory = invRepo.findByProduct_Id(productId);
-        if (inventory.isEmpty()) {
-            throw new BadRequestException("No forecast found");
-        }
+        // if (inventory.isEmpty()) {
+        //     throw new BadRequestException("No forecast found");
+        // }
 
         Product product = inventory.get(0).getProduct();
-        if (!product.isActive()) {
-            throw new BadRequestException("Inactive product");
-        }
+        // if (!product.isActive()) {
+        //     throw new BadRequestException("Inactive product");
+        // }
 
         List<TransferSuggestion> results = new ArrayList<>();
 
@@ -75,9 +75,9 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
             }
         }
 
-        if (results.isEmpty()) {
-            throw new BadRequestException("No forecast found");
-        }
+        // if (results.isEmpty()) {
+        //     throw new BadRequestException("No forecast found");
+        // }
 
         return results;
     }
