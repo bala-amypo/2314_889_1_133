@@ -49,7 +49,7 @@ public class AuthController {
     }
 
     // ===================== ADMIN INIT ENDPOINT (required by tests) =====================
-    @PostMapping("{"/init-admin", "/init"}")
+    @PostMapping("/init-admin")
     public ResponseEntity<?> initAdminUser() {
 
         Optional<UserAccount> existing =
