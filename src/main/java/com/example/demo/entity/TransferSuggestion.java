@@ -29,7 +29,7 @@ public class TransferSuggestion {
     private LocalDateTime generatedAt;
 
     @PrePersist
-    public void prePersist() {
+    public void setsGeneratedAt() {
         generatedAt = LocalDateTime.now();
     }
 
