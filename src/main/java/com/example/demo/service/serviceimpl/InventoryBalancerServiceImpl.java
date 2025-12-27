@@ -34,9 +34,9 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
     public List<TransferSuggestion> generateSuggestions(Long productId) {
 
         List<InventoryLevel> inventory = invRepo.findByProduct_Id(productId);
-        // if (inventory.isEmpty()) {
-        //     throw new BadRequestException("No forecast found");
-        // }
+        if (inventory.isEmpty()) {
+            throw new BadRequestException("No forecast found");
+        }
 
         Product product = inventory.get(0).getProduct();
         if (!product.isActive()) {
