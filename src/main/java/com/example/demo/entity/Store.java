@@ -5,21 +5,21 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "stores", uniqueConstraints = {
         @UniqueConstraint(columnNames = "storeName")
-})
-public class Store {
+        })
+        public class Store {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+            @Id
+                @GeneratedValue(strategy = GenerationType.IDENTITY)
+                    private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String storeName;
+                        @Column(nullable = false, unique = true)
+                            private String storeName;
 
-    private String address;
-    private String region;
+                                private String address;
+                                    private String region;
 
-    private boolean active = true;
-
+                                        private boolean active = true;
+                                        
     // getters & setters
     public Long getId() { return id; }
     public String getStoreName() { return storeName; }
