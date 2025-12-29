@@ -70,11 +70,7 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
             return List.of();
         }
 
-        // quantity that can actually be meaningfully transferred
-        // int qty = Math.min(maxSurplus, Math.abs(maxShortage));
-        // if (qty <= 0) {
-        //     return List.of();
-        // }
+        
         int qty = Math.min(maxSurplus, Math.abs(maxShortage));
         if (qty <= 0) qty = 1;
 
@@ -84,8 +80,7 @@ public class InventoryBalancerServiceImpl implements InventoryBalancerService {
         ts.setTargetStore(underStore.getStore());
         ts.setSuggestedQuantity(qty);
         ts.setReason("Auto balance - move surplus to deficit");
-        // status + generatedAt handled by defaults / @PrePersist
-
+        
         transferSuggestionRepository.saveAndFlush(ts);
         return List.of(ts);
     }
